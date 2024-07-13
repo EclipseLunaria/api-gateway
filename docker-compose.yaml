@@ -1,0 +1,13 @@
+services:
+  api:
+    build: .
+    entrypoint: ["/bin/sh", "-c", "exec npm run start"]
+    environment:
+      - PORT=3001
+    # ports:
+    #   - 3001:3001
+
+  # series_info:
+  #   build: ./microservices/series-info-service
+  #   ports:
+  #     - 3002:3002
