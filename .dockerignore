@@ -34,3 +34,6 @@ docker-compose.yml
 # Ignore other unnecessary files
 .git
 .gitignore
+
+# Ignore microservices source code
+microservices

@@ -3,11 +3,21 @@ services:
     build: .
     entrypoint: ["/bin/sh", "-c", "exec npm run start"]
     environment:
-      - PORT=3001
-    # ports:
-    #   - 3001:3001
+      - PORT=6969
+    ports:
+      - 6969:6969
+    depends_on:
+      - series_info
+    env_file:
+      - ./.env.dev
 
-  # series_info:
-  #   build: ./microservices/series-info-service
-  #   ports:
-  #     - 3002:3002
+  series_info:
+    build: ./microservices/series-info-service
+    entrypoint: ["/bin/sh", "-c", "exec npm run start"]
+    environment:
+      - PORT=6968
+    ports:
+      - 6968:6968
+
+    env_file:
+      - ./.env.dev
