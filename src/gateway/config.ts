@@ -1,5 +1,12 @@
 import { config as loadEnv } from "dotenv";
 import { cleanEnv, str, port, CleanedEnvAccessors } from "envalid";
+import { config } from "dotenv";
+import { isDev } from "./utils";
+
+if (isDev()) {
+  config({ path: "./.env.dev" });
+}
+console.log(process.env);
 
 loadEnv();
 

@@ -12,7 +12,7 @@ seriesRouter.get("/status/", async (req, res) => {
     if (!html) {
       throw Error("No response from series api");
     }
-    res.status(200).send("OK");
+    res.status(200).send(html);
   } catch (e: any) {
     console.error(
       `Error fetching status: ${e}, ${typeof e}, ${Object.entries(e)}`
