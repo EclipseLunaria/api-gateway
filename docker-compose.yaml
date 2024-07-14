@@ -27,3 +27,17 @@ services:
 
     env_file:
       - ./dev.env
+
+  extraction-service:
+    build: ./microservices/extraction-service
+    entrypoint: ["/bin/sh", "-c", "exec npm run start"]
+    environment:
+      - PORT=6967
+    ports:
+      - 6967:6967
+    volumes:
+      - ./microservices/extraction-service:/app
+      - /app/node_modules
+
+    env_file:
+      - ./dev.env
