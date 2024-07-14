@@ -41,3 +41,16 @@ services:
 
     env_file:
       - ./dev.env
+
+  storage-service:
+    build: ./microservices/storage-service
+    entrypoint: ["/bin/sh", "-c", "exec npm run start"]
+    environment:
+      - PORT=6966
+    ports:
+      - 6966:6966
+    volumes:
+      - ./microservices/extraction-service:/app
+      - /app/node_modules
+    env_file:
+      - ./dev.env
