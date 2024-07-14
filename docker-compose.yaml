@@ -12,7 +12,7 @@ services:
     depends_on:
       - series_info
     env_file:
-      - ./.env.dev
+      - ./.dev.env
 
   series_info:
     build: ./microservices/series-info-service
@@ -26,4 +26,4 @@ services:
       - /app/node_modules
 
     env_file:
-      - ./.env.dev
+      - ./.dev.env

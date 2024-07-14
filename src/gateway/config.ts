@@ -1,14 +1,7 @@
 import { config as loadEnv } from "dotenv";
 import { cleanEnv, str, port, CleanedEnvAccessors } from "envalid";
-import { config } from "dotenv";
-import { isDev } from "./utils";
 
-if (isDev()) {
-  config({ path: "./.env.dev" });
-}
-console.log(process.env);
-
-loadEnv();
+loadEnv({ path: "./dev.env" });
 
 interface EnvVars extends CleanedEnvAccessors {
   SERIES_INFO_URL: string;
