@@ -15,7 +15,7 @@ services:
       - storage-service
       # - database-service
     env_file:
-      - ./dev.env
+      - ./docker.env
 
   series_info:
     build: ./microservices/series-info-service
@@ -29,7 +29,7 @@ services:
       - /app/node_modules
 
     env_file:
-      - ./dev.env
+      - ./docker.env
 
   extraction-service:
     build: ./microservices/extraction-service
@@ -43,7 +43,7 @@ services:
       - /app/node_modules
 
     env_file:
-      - ./dev.env
+      - ./docker.env
 
   storage-service:
     build: ./microservices/storage-service
@@ -56,7 +56,7 @@ services:
       - ./microservices/storage-service:/app
       - /app/node_modules
     env_file:
-      - ./dev.env
+      - ./docker.env
 
   # database-service:
   #   build: ./microservices/database-service
@@ -69,4 +69,4 @@ services:
   #     - ./microservices/database-service:/app
   #     - /app/node_modules
   #   env_file:
-  #     - ./dev.env
+  #     - ./docker.env

@@ -6,7 +6,7 @@ const buildServiceUrl = (baseUrl: string, path: string) => {
 const isDev = () => {
   // Define your logic for determining if it's a development environment
   // For example, you can check the value of an environment variable
-  return process.env.NODE_ENV === "development";
+  return process.env.ENV_MODE !== "docker";
 };
 
 export { buildServiceUrl, isDev };
