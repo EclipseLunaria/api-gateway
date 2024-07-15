@@ -2,6 +2,7 @@ import { Router } from "express";
 import env from "../config";
 import axios from "axios";
 import { buildServiceUrl } from "../utils";
+import { mangaSearchController } from "../controllers/mangaInfoControllers";
 const seriesRouter = Router();
 
 seriesRouter.get("/status/", async (req, res) => {
@@ -20,5 +21,7 @@ seriesRouter.get("/status/", async (req, res) => {
     res.status(500).send(`Error fetching status: ${e}`);
   }
 });
+
+seriesRouter.get("/search/manga", mangaSearchController);
 
 export { seriesRouter };
