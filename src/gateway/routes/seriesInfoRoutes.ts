@@ -22,6 +22,7 @@ seriesRouter.get("/status/", async (req, res) => {
   }
 });
 
+// Refactor into individual router once more search functions are created
 seriesRouter.get("/search/manga", mangaSearchController);
 
 export { seriesRouter };
