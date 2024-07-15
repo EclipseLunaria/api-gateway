@@ -7,3 +7,6 @@
 [submodule "microservices/extraction-service"]
 	path = microservices/extraction-service
 	url = https://github.com/EclipseLunaria/Manga-Extraction-Service
+[submodule "microservices/database-service"]
+	path = microservices/database-service
+	url = https://github.com/EclipseLunaria/manga-reader-database-microservice.git

@@ -54,3 +54,16 @@ services:
       - /app/node_modules
     env_file:
       - ./dev.env
+
+  database-service:
+    image: microservices/database-service
+    entrypoint: ["/bin/sh", "-c", "exec npm run start"]
+    environment:
+      - PORT=6965
+    ports:
+      - 6965:6965
+    volumes:
+      - ./microservices/database-service/database.sqlite:/app/microservices/database-service/database.sqlite
+      - /app/node_modules
+    env_file:
+      - ./dev.env
