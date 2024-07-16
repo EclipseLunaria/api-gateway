@@ -2,6 +2,8 @@ import { Router } from "express";
 import { buildServiceUrl } from "../utils";
 import axios from "axios";
 import env from "../config";
+import { getMicroserviceHealth } from "../controllers/healthControllers";
+
 const healthRouter = Router();
 
 healthRouter.get("/status/", async (req, res) => {
@@ -20,3 +22,7 @@ healthRouter.get("/status/", async (req, res) => {
     res.status(500).send(`Error fetching status: ${e}`);
   }
 });
+
+healthRouter.get("/microservices/", getMicroserviceHealth);
+
+export { healthRouter };

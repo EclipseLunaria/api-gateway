@@ -1,5 +1,8 @@
 import express from "express";
+
 import { seriesRouter } from "./routes/seriesInfoRoutes";
+import { healthRouter } from "./routes/healthRouter";
+
 const app = express();
 app.use(express.json());
 app.use((req, res, next) => {
@@ -13,6 +16,9 @@ app.use((req, res, next) => {
 });
 // route for fetcing series info
 app.use("/series", seriesRouter);
+
+// route for fetching health status of microservices
+app.use("/health", healthRouter);
 
 // basic operation to check if the gateway is working
 app.get("/", (req, res) => {
