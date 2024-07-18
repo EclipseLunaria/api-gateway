@@ -1,0 +1,13 @@
+import { Request, Response } from "express";
+import { fetchChapter } from "../services/chapterFetchService";
+
+export const chapterFetchController = async (req: Request, res: Response) => {
+  try {
+    const { mangaId, id } = req.params;
+    console.log(mangaId, id);
+    const chapter = await fetchChapter(mangaId, id);
+    res.json(chapter);
+  } catch (error: any) {
+    res.status(500).json({ message: error.message });
+  }
+};
