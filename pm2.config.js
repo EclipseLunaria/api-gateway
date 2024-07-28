@@ -15,7 +15,7 @@ module.exports = {
       },
     },
     {
-      name: "series-info-service",
+      name: "seriesInfo",
       script: "ts-node",
       args: "src/index.ts",
       cwd: "./microservices/series-info-service",
@@ -29,21 +29,7 @@ module.exports = {
       },
     },
     {
-      name: "Extraction Service",
-      script: "ts-node",
-      args: "src/index.ts",
-      cwd: "./microservices/extraction-service",
-      watch: true, // Enable watch mode
-      ignore_watch: ["node_modules"],
-      env: {
-        NODE_ENV: "development",
-      },
-      env_production: {
-        NODE_ENV: "production",
-      },
-    },
-    {
-      name: "Distribution Service",
+      name: "distribution",
       script: "ts-node",
       args: "src/index.ts",
       cwd: "./microservices/distribution-service",
