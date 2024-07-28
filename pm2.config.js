@@ -4,7 +4,7 @@ module.exports = {
       name: "gateway",
       script: "ts-node",
       args: "./server.ts",
-      cwd: "./src/gateway",
+      cwd: "./gateway",
       watch: true, // Enable watch mode
       ignore_watch: ["node_modules"],
       env: {
