@@ -16,7 +16,7 @@ app.use((req, res, next) => {
   next();
 });
 // route for fetcing series info
-app.use("/series", seriesRouter);
+app.use("/manga", seriesRouter);
 
 // route for fetching health status of microservices
 app.use("/health", healthRouter);
