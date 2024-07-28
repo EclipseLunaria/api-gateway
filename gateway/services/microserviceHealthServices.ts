@@ -3,7 +3,8 @@ import { MicroService } from "../types";
 import { isDev } from "../utils";
 
 export const checkMicroserviceHealth = async (serviceHost: MicroService) => {
-  const serviceUrl = `${serviceHost.url}/shared/status`;
+  const serviceUrl = `${serviceHost.url}/common/status`;
+  console.log(`Checking health of ${serviceHost.name} at ${serviceUrl}`);
   const timeSent = Date.now();
   try {
     const response = await axios.get(serviceUrl);
