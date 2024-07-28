@@ -6,19 +6,15 @@ import { Request, Response } from "express";
 const microservices: MicroService[] = [
   {
     name: "series-info-service",
-    url: env.SERIES_INFO_URL,
+    url: `http://localhost:${env.SERIES_INFO_PORT}`,
   },
   {
     name: "storage-service",
-    url: env.STORAGE_SERVICE_URL,
+    url: `http://localhost:${env.STORAGE_PORT}`,
   },
   {
-    name: "extractor-service",
-    url: env.EXTRACTION_SERVICE_URL,
-  },
-  {
-    name: "database-service",
-    url: env.DATABASE_SERVICE_URL,
+    name: "distribution-service",
+    url: `http://localhost:${env.DISTRIBUTION_PORT}`,
   },
 ];
 

@@ -9,7 +9,10 @@ const healthRouter = Router();
 healthRouter.get("/status/", async (req, res) => {
   let html: string | null = null;
   try {
-    const endpointPath = buildServiceUrl(env.SERIES_INFO_URL, "/status");
+    const endpointPath = buildServiceUrl(
+      `http://localhost:${env.SERIES_INFO_PORT}`,
+      "/status"
+    );
     html = (await axios.get(endpointPath)).data;
     if (!html) {
       throw Error("No response from series api");

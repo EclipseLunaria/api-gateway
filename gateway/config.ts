@@ -1,4 +1,4 @@
-import { config as loadEnv } from "dotenv";
+import { configDotenv, config as loadEnv } from "dotenv";
 import { cleanEnv, str, port, CleanedEnvAccessors } from "envalid";
 import path from "path";
 import { isDev } from "./utils";
@@ -9,21 +9,15 @@ const envPath = path.resolve(
 console.log("Loading .env file from:", envPath);
 console.log("isDev:", isDev());
 loadEnv({ path: envPath });
+const config = configDotenv({ path: envPath }).parsed;
 
-interface EnvVars extends CleanedEnvAccessors {
-  SERIES_INFO_URL: string;
-  STORAGE_SERVICE_URL: string;
-  EXTRACTION_SERVICE_URL: string;
-  DATABASE_SERVICE_URL: string;
-  PORT: number;
+if (!config) {
+  throw new Error(`No config found at: ${envPath}`);
 }
-
-export const env = cleanEnv(process.env, {
-  SERIES_INFO_URL: str(),
-  STORAGE_SERVICE_URL: str(),
-  EXTRACTION_SERVICE_URL: str(),
-  PORT: port(),
-  DATABASE_SERVICE_URL: str(),
-}) as EnvVars;
-
+const env = {
+  SERIES_INFO_PORT: config.SERIES_INFO_PORT || 6901,
+  STORAGE_PORT: config.STORAGE_PORT || 6902,
+  DISTRIBUTION_PORT: config.DISTRIBUTION_PORT || 6903,
+  GATEWAY_PORT: config.GATEWAY_PORT || 6900,
+};
 export default env;
