@@ -7,6 +7,7 @@ const envPath = path.resolve(
   `${isDev() ? "../../local.env" : "../../docker.env"}`
 );
 console.log("Loading .env file from:", envPath);
+console.log("isDev:", isDev());
 loadEnv({ path: envPath });
 
 interface EnvVars extends CleanedEnvAccessors {
