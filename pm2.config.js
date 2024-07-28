@@ -42,19 +42,19 @@ module.exports = {
         NODE_ENV: "production",
       },
     },
-    // {
-    //   name: "series-info-service",
-    //   script: "ts-node",
-    //   args: "src/index.ts",
-    //   cwd: "./microservices/series-info-service",
-    //   watch: true, // Enable watch mode
-    //   ignore_watch: ["node_modules"],
-    //   env: {
-    //     NODE_ENV: "development",
-    //   },
-    //   env_production: {
-    //     NODE_ENV: "production",
-    //   },
-    // },
+    {
+      name: "storage",
+      script: "ts-node",
+      args: "src/index.ts",
+      cwd: "./microservices/storage-service",
+      watch: true, // Enable watch mode
+      ignore_watch: ["node_modules"],
+      env: {
+        NODE_ENV: "development",
+      },
+      env_production: {
+        NODE_ENV: "production",
+      },
+    },
   ],
 };
