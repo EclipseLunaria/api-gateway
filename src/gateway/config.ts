@@ -1,7 +1,11 @@
 import { config as loadEnv } from "dotenv";
 import { cleanEnv, str, port, CleanedEnvAccessors } from "envalid";
+import path from "path";
 import { isDev } from "./utils";
-const envPath = isDev() ? "local.env" : "docker.env";
+const envPath = path.resolve(
+  __dirname,
+  `${isDev() ? "../../local.env" : "../../docker.env"}`
+);
 console.log("Loading .env file from:", envPath);
 loadEnv({ path: envPath });
 

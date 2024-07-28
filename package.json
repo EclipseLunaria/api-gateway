@@ -8,6 +8,7 @@
     "build": "tsc",
     "restart-docker": "docker-compose down && docker-compose up --build",
     "dev": "nodemon",
+    "dev-cluster": "pm2 start pm2.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -26,6 +27,7 @@
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
     "envalid": "^8.0.0",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "pm2": "^5.4.2"
   }
 }
