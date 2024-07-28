@@ -3,7 +3,7 @@ const buildServiceUrl = (baseUrl: string, path: string) => {
 };
 
 const isDev = () => {
-  return process.env.NODE_ENV !== "docker";
+  return process.env.NODE_ENV !== "production";
 };
 
 export { buildServiceUrl, isDev };
