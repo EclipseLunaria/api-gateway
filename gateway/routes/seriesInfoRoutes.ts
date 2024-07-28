@@ -6,8 +6,8 @@ import {
 const seriesRouter = Router();
 
 // Refactor into individual router once more search functions are created
-seriesRouter.get("/search/manga", mangaSearchController);
+seriesRouter.get("/search", mangaSearchController);
 
-seriesRouter.get("/search/manga/:id/", mangaInfoController);
+seriesRouter.get("/:id/", mangaInfoController);
 
 export { seriesRouter };
