@@ -1,5 +1,4 @@
 import { configDotenv, config as loadEnv } from "dotenv";
-import { cleanEnv, str, port, CleanedEnvAccessors } from "envalid";
 import path from "path";
 import { isDev } from "./utils";
 const envPath = path.resolve(
@@ -9,7 +8,7 @@ const envPath = path.resolve(
 console.log("Loading .env file from:", envPath);
 console.log("isDev:", isDev());
 loadEnv({ path: envPath });
-const config = configDotenv({ path: envPath }).parsed;
+const config = loadEnv({ path: envPath }).parsed;
 
 if (!config) {
   throw new Error(`No config found at: ${envPath}`);
