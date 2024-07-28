@@ -4,12 +4,6 @@
 [submodule "microservices/storage-service"]
 	path = microservices/storage-service
 	url = https://github.com/EclipseLunaria/Manga-Storage-Service.git
-[submodule "microservices/extraction-service"]
-	path = microservices/extraction-service
-	url = https://github.com/EclipseLunaria/Manga-Extraction-Service
-[submodule "microservices/database-service"]
-	path = microservices/database-service
-	url = https://github.com/EclipseLunaria/manga-reader-database-microservice.git
 [submodule "microservices/distribution-service"]
 	path = microservices/distribution-service
 	url = https://github.com/EclipseLunaria/manga-image-distribution-service.git

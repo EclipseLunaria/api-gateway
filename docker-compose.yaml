@@ -11,11 +11,9 @@ services:
       - /app/node_modules
     depends_on:
       - series_info
-      - extraction-service
       - storage-service
-      # - database-service
     env_file:
-      - ./docker.env
+      - ./production.env
 
   series_info:
     build: ./microservices/series-info-service
@@ -27,21 +25,6 @@ services:
     volumes:
       - ./microservices/series-info-service:/app
       - /app/node_modules
-
-    env_file:
-      - ./docker.env
-
-  extraction-service:
-    build: ./microservices/extraction-service
-    entrypoint: ["/bin/sh", "-c", "exec npm run start"]
-    environment:
-      - PORT=6967
-    ports:
-      - 6967:6967
-    volumes:
-      - ./microservices/extraction-service:/app
-      - /app/node_modules
-
     env_file:
       - ./docker.env
 
@@ -56,17 +39,4 @@ services:
       - ./microservices/storage-service:/app
       - /app/node_modules
     env_file:
-      - ./docker.env
-
-  # database-service:
-  #   build: ./microservices/database-service
-  #   entrypoint: ["/bin/sh", "-c", "exec npm run start"]
-  #   environment:
-  #     - PORT=6965
-  #   ports:
-  #     - 6965:6965
-  #   volumes:
-  #     - ./microservices/database-service:/app
-  #     - /app/node_modules
-  #   env_file:
-  #     - ./docker.env
+      - ./production.env
