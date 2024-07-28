@@ -25,7 +25,7 @@ app.use("/fetch", chapterFetchRouter);
 
 // basic operation to check if the gateway is working
 app.get("/", (req, res) => {
-  res.send("api gateway is working");
+  res.send("Gateway is online.");
 });
 
 export default app;
