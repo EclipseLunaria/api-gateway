@@ -19,7 +19,10 @@ const fetchMangaInfo = async (mangaId: string) => {
   const endpointUrl = `${BASE_URL}/manga/${mangaId}`;
   console.log(endpointUrl);
   try {
-    const results = (await axios.get(endpointUrl)).data;
+    let results = {
+      ...(await axios.get(endpointUrl)).data,
+      chapters: await fetchChapterList(mangaId),
+    };
     return results;
   } catch (error: any) {
     console.log(error);
@@ -39,4 +42,21 @@ const fetchChapterList = async (mangaId: string) => {
   }
 };
 
-export { searchMangaSeries, fetchMangaInfo, fetchChapterList };
+const fetchMangaFields = async (mangaId: string, fieldId: string) => {
+  const endpointUrl = `${BASE_URL}/manga/${mangaId}/${fieldId}`;
+  console.log(endpointUrl);
+  try {
+    const results = (await axios.get(endpointUrl)).data;
+    return results;
+  } catch (error: any) {
+    console.log(error);
+    return null;
+  }
+};
+
+export {
+  searchMangaSeries,
+  fetchMangaInfo,
+  fetchChapterList,
+  fetchMangaFields,
+};

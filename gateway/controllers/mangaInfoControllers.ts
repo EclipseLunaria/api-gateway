@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { normalizeQuery } from "../utils/searchUtils";
 import {
   fetchChapterList,
+  fetchMangaFields,
   fetchMangaInfo,
   searchMangaSeries,
 } from "../services/searchMangaServices";
@@ -45,4 +46,15 @@ const chapterController = async (req: Request, res: Response) => {
   return res.json(chapterList);
 };
 
-export { searchController, infoController, chapterController };
+const fieldController = async (req: Request, res: Response) => {
+  const { mangaId, fieldId } = req.params;
+  if (!mangaId || !fieldId) {
+    res.status(404).send({ message: "specify a manga id and field." });
+    return;
+  }
+  const fieldInfo = await fetchMangaFields(mangaId, fieldId);
+  if (!fieldInfo) return res.status(404).send("Error: Field not found.");
+  return res.json(fieldInfo);
+};
+
+export { searchController, infoController, chapterController, fieldController };

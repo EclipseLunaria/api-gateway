@@ -2,7 +2,7 @@ import { Router } from "express";
 import {
   infoController,
   searchController,
-  chapterController,
+  fieldController,
 } from "../controllers/mangaInfoControllers";
 const seriesRouter = Router();
 
@@ -11,6 +11,6 @@ seriesRouter.get("/search", searchController);
 
 seriesRouter.get("/:mangaId/", infoController);
 
-seriesRouter.get("/:mangaId/chapters", chapterController);
+seriesRouter.get("/:mangaId/:fieldId", fieldController);
 
 export { seriesRouter };
