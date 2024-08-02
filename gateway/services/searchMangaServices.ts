@@ -1,10 +1,10 @@
 import axios from "axios";
 import env from "../config";
-import { normalizeSearchTerm } from "../utils/searchUtils";
+import { normalizeQuery } from "../utils/searchUtils";
 const BASE_URL = `http://localhost:${env.SERIES_INFO_PORT}`;
-const searchMangaSeries = async (searchTerm: string) => {
-  const normalizedSearchTerm = normalizeSearchTerm(searchTerm);
-  const endpointUrl = `${BASE_URL}/search?term=${normalizedSearchTerm}`;
+const searchMangaSeries = async (q: string) => {
+  const query = normalizeQuery(q);
+  const endpointUrl = `${BASE_URL}/search?q=${query}`;
   console.log(endpointUrl);
   try {
     const results = (await axios.get(endpointUrl)).data;
@@ -15,8 +15,8 @@ const searchMangaSeries = async (searchTerm: string) => {
   }
 };
 
-const fetchMangaInfo = async (id: string) => {
-  const endpointUrl = `${BASE_URL}/manga-${id}`;
+const fetchMangaInfo = async (mangaId: string) => {
+  const endpointUrl = `${BASE_URL}/manga/${mangaId}`;
   console.log(endpointUrl);
   try {
     const results = (await axios.get(endpointUrl)).data;

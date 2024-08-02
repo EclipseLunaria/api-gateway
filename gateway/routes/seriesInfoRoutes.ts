@@ -8,6 +8,6 @@ const seriesRouter = Router();
 // Refactor into individual router once more search functions are created
 seriesRouter.get("/search", mangaSearchController);
 
-seriesRouter.get("/:id/", mangaInfoController);
+seriesRouter.get("/:mangaId/", mangaInfoController);
 
 export { seriesRouter };

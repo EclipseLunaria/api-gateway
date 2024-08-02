@@ -1,4 +1,4 @@
-const normalizeSearchTerm = (searchTerm: string) => {
+const normalizeQuery = (searchTerm: string) => {
   const wsCode = " ";
   console.log("pre normalization", searchTerm);
 
@@ -19,4 +19,4 @@ const normalizeSearchTerm = (searchTerm: string) => {
   return searchTerm;
 };
 
-export { normalizeSearchTerm };
+export { normalizeQuery };
