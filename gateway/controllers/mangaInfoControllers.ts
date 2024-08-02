@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
 import { normalizeQuery } from "../utils/searchUtils";
 import {
+  fetchChapterList,
   fetchMangaInfo,
   searchMangaSeries,
 } from "../services/searchMangaServices";
 
-const mangaSearchController = async (req: Request, res: Response) => {
+const searchController = async (req: Request, res: Response) => {
   const { q } = req.query;
   if (!q) {
     res.status(404).send({ message: "specify a search term" });
@@ -19,7 +20,7 @@ const mangaSearchController = async (req: Request, res: Response) => {
   return res.json(searchResults);
 };
 
-const mangaInfoController = async (req: Request, res: Response) => {
+const infoController = async (req: Request, res: Response) => {
   console.log(req.params);
   const { mangaId } = req.params;
   if (!mangaId) {
@@ -33,4 +34,15 @@ const mangaInfoController = async (req: Request, res: Response) => {
   return res.json(mangaInfo);
 };
 
-export { mangaSearchController, mangaInfoController };
+const chapterController = async (req: Request, res: Response) => {
+  const { mangaId } = req.params;
+  if (!mangaId) {
+    res.status(404).send({ message: "specify a manga id." });
+    return;
+  }
+  const chapterList = await fetchChapterList(mangaId);
+  if (!chapterList) return res.status(404).send("Error: Chapter not found.");
+  return res.json(chapterList);
+};
+
+export { searchController, infoController, chapterController };

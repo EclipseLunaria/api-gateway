@@ -1,13 +1,16 @@
 import { Router } from "express";
 import {
-  mangaInfoController,
-  mangaSearchController,
+  infoController,
+  searchController,
+  chapterController,
 } from "../controllers/mangaInfoControllers";
 const seriesRouter = Router();
 
 // Refactor into individual router once more search functions are created
-seriesRouter.get("/search", mangaSearchController);
+seriesRouter.get("/search", searchController);
 
-seriesRouter.get("/:mangaId/", mangaInfoController);
+seriesRouter.get("/:mangaId/", infoController);
+
+seriesRouter.get("/:mangaId/chapters", chapterController);
 
 export { seriesRouter };
