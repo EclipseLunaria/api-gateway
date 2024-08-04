@@ -18,5 +18,6 @@ const env = {
   STORAGE_PORT: config.STORAGE_PORT || 6902,
   DISTRIBUTION_PORT: config.DISTRIBUTION_PORT || 6903,
   GATEWAY_PORT: config.GATEWAY_PORT || 6900,
+  DATA_LAYER_PORT: config.DATA_LAYER_PORT || 6999,
 };
 export default env;

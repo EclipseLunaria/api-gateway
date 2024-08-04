@@ -7,3 +7,6 @@
 [submodule "microservices/distribution-service"]
 	path = microservices/distribution-service
 	url = https://github.com/EclipseLunaria/manga-image-distribution-service.git
+[submodule "microservices/data-layer-service"]
+	path = microservices/data-layer-service
+	url = https://github.com/EclipseLunaria/database-service.git
