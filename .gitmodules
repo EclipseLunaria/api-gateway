@@ -10,3 +10,6 @@
 [submodule "microservices/data-layer-service"]
 	path = microservices/data-layer-service
 	url = https://github.com/EclipseLunaria/database-service.git
+[submodule "microservices/auth"]
+	path = microservices/auth
+	url = https://github.com/EclipseLunaria/auth-service.git
