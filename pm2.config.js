@@ -74,5 +74,19 @@ module.exports = {
         NODE_ENV: "production",
       },
     },
+    {
+      name: "Authentication",
+      script: "ts-node",
+      args: "src/index.ts",
+      cwd: "./microservices/auth",
+      watch: true, // Enable watch mode
+      ignore_watch: ["node_modules"],
+      env: {
+        NODE_ENV: "development",
+      },
+      env_production: {
+        NODE_ENV: "production",
+      },
+    },
   ],
 };

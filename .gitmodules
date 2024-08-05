@@ -1,14 +1,14 @@
-[submodule "microservices/series-info-service"]
-	path = microservices/series-info-service
+[submodule "microservices/series-info"]
+	path = microservices/series-info
 	url = https://github.com/EclipseLunaria/Manga-Reader-Series-Info-Service.git
-[submodule "microservices/storage-service"]
-	path = microservices/storage-service
+[submodule "microservices/storage"]
+	path = microservices/storage
 	url = https://github.com/EclipseLunaria/Manga-Storage-Service.git
-[submodule "microservices/distribution-service"]
-	path = microservices/distribution-service
+[submodule "microservices/distribution"]
+	path = microservices/distribution
 	url = https://github.com/EclipseLunaria/manga-image-distribution-service.git
-[submodule "microservices/data-layer-service"]
-	path = microservices/data-layer-service
+[submodule "microservices/data-layer"]
+	path = microservices/data-layer
 	url = https://github.com/EclipseLunaria/database-service.git
 [submodule "microservices/auth"]
 	path = microservices/auth
