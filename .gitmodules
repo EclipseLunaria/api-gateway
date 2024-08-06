@@ -10,3 +10,6 @@
 [submodule "microservices/distribution"]
 	path = microservices/distribution
 	url = https://github.com/EclipseLunaria/manga-image-distribution-service.git
+[submodule "microservices/database"]
+	path = microservices/database
+	url = https://github.com/EclipseLunaria/database-service.git
