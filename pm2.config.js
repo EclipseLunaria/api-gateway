@@ -18,7 +18,7 @@ module.exports = {
       name: "seriesInfo",
       script: "ts-node",
       args: "src/index.ts",
-      cwd: "./microservices/series-info-service",
+      cwd: "./microservices/series-info",
       watch: true, // Enable watch mode
       ignore_watch: ["node_modules"],
       env: {
@@ -36,7 +36,7 @@ module.exports = {
       name: "distribution",
       script: "ts-node",
       args: "src/index.ts",
-      cwd: "./microservices/distribution-service",
+      cwd: "./microservices/distribution",
       watch: true, // Enable watch mode
       ignore_watch: ["node_modules"],
       env: {
@@ -50,7 +50,7 @@ module.exports = {
       name: "storage",
       script: "ts-node",
       args: "src/index.ts",
-      cwd: "./microservices/storage-service",
+      cwd: "./microservices/storage",
       watch: true, // Enable watch mode
       ignore_watch: ["node_modules"],
       env: {
@@ -61,10 +61,10 @@ module.exports = {
       },
     },
     {
-      name: "data-layer",
+      name: "database",
       script: "ts-node",
       args: "src/index.ts",
-      cwd: "./microservices/data-layer-service",
+      cwd: "./microservices/database",
       watch: true, // Enable watch mode
       ignore_watch: ["node_modules"],
       env: {
