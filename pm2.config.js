@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: "gateway",
-      script: "ts-node",
+      script: "node_modules/.bin/ts-node",
       args: "./server.ts",
       cwd: "./gateway",
       watch: true, // Enable watch mode
@@ -10,7 +10,6 @@ module.exports = {
       env: {
         NODE_ENV: "production",
       },
-
     },
   ],
 };
