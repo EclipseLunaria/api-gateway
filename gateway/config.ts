@@ -1,12 +1,12 @@
 import { config as loadEnv } from "dotenv";
 import path from "path";
 import { isDev } from "./utils";
+
 const envPath = path.resolve(
   __dirname,
   `${isDev() ? "../local.env" : "../production.env"}`
 );
-console.log("Loading .env file from:", envPath);
-console.log("isDev:", isDev());
+
 loadEnv({ path: envPath });
 const config = loadEnv({ path: envPath }).parsed;
 
