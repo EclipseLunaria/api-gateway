@@ -1,5 +1,5 @@
-import { config as loadEnv } from "dotenv";
 import path from "path";
+import { config as loadEnv } from "dotenv";
 import { isDev } from "./utils";
 
 const envPath = path.resolve(
@@ -20,4 +20,5 @@ const env = {
   GATEWAY_PORT: config.GATEWAY_PORT || 6900,
   DATA_LAYER_PORT: config.DATA_LAYER_PORT || 6999,
 };
+
 export default env;
