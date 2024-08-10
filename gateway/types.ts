@@ -3,6 +3,7 @@ export interface MicroService {
   url: string;
 }
 
+
 export interface MicroServiceStatus {
   name: string;
   status: number;
