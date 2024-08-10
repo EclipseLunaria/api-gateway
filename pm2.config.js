@@ -1,8 +1,10 @@
+import path from "path";
+
 module.exports = {
   apps: [
     {
       name: "gateway",
-      script: "node_modules/.bin/ts-node",
+      script: path.join(__dirname, "node_modules/.bin/ts-node"),
       args: "./server.ts",
       cwd: "./gateway",
       watch: true, // Enable watch mode
