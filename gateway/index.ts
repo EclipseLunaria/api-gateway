@@ -15,7 +15,6 @@ app.use((req: Request, res: Response, next) => {
   );
   next();
 });
-// route for fetcing series info
 app.use("/manga", seriesRouter);
 app.use("/health", healthRouter);
 app.use("/fetch", chapterFetchRouter);
