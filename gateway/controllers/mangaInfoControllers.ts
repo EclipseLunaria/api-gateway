@@ -16,8 +16,8 @@ const searchController = async (req: Request, res: Response) => {
 
   const normalizedSearchTerm = normalizeQuery(q.toString());
   const searchResults = await searchMangaSeries(normalizedSearchTerm);
-
   if (!searchResults) return res.status(404).send("Error");
+
   return res.json(searchResults);
 };
 
