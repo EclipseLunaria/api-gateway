@@ -1,4 +1,4 @@
-import { configDotenv, config as loadEnv } from "dotenv";
+import { config as loadEnv } from "dotenv";
 import path from "path";
 import { isDev } from "./utils";
 const envPath = path.resolve(
