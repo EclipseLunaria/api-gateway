@@ -1,12 +1,12 @@
 import express from "express";
-
+import { Request, Response } from "express";
 import { seriesRouter } from "./routes/seriesInfoRoutes";
 import { healthRouter } from "./routes/healthRouter";
 import chapterFetchRouter from "./routes/chapterFetchingRouter";
 
 const app = express();
 app.use(express.json());
-app.use((req, res, next) => {
+app.use((req: Request, res: Response, next) => {
   res.header("Access-Control-Allow-Origin", "*"); // or specify allowed origins
   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
   res.header(
@@ -24,7 +24,7 @@ app.use("/health", healthRouter);
 app.use("/fetch", chapterFetchRouter);
 
 // basic operation to check if the gateway is working
-app.get("/", (req, res) => {
+app.get("/", (req: Request, res: Response) => {
   res.send("Gateway is online.");
 });
 
