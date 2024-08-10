@@ -17,10 +17,7 @@ app.use((req: Request, res: Response, next) => {
 });
 // route for fetcing series info
 app.use("/manga", seriesRouter);
-
-// route for fetching health status of microservices
 app.use("/health", healthRouter);
-
 app.use("/fetch", chapterFetchRouter);
 
 // basic operation to check if the gateway is working
