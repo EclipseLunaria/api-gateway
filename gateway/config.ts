@@ -9,7 +9,6 @@ const envPath = path.resolve(
 
 loadEnv({ path: envPath });
 const config = loadEnv({ path: envPath }).parsed;
-
 if (!config) {
   throw new Error(`No config found at: ${envPath}`);
 }
