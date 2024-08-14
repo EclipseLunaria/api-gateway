@@ -8,7 +8,7 @@ chapterFetchRouter.get("/", (req: Request, res: Response) => {
 });
 
 chapterFetchRouter.get(
-  "/manga/:mangaId/chapter/:chapterId",
+  "/:mangaId/:chapterId",
   chapterFetchController
 );
 

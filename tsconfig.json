@@ -7,7 +7,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "moduleResolution": "Node"
   },
   "include": ["gateway"],
   "exclude": ["node_modules", "**/*.spec.ts"]
