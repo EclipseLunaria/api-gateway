@@ -10,3 +10,5 @@ export interface MicroServiceStatus {
   message?: string;
   ping?: number;
 }
+
+export type SearchCategory = "last_updated" | "popular" | "newest";
