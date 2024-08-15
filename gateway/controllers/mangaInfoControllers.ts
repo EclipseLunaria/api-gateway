@@ -10,7 +10,7 @@ import {
 import { SearchCategory } from "../types";
 
 const searchController = async (req: Request, res: Response) => {
-  const q = normalizeQuery(req.query.toString() ?? "");
+  const q = normalizeQuery(req.query.q.toString() ?? "");
   if (!q) {
     res.status(404).send({ message: "specify a search term" });
     return;
