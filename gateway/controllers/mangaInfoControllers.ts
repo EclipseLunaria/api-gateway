@@ -4,22 +4,29 @@ import {
   fetchChapterList,
   fetchMangaFields,
   fetchMangaInfo,
+  getSeriesList,
   searchMangaSeries,
 } from "../services/searchMangaServices";
+import { SearchCategory } from "../types";
 
 const searchController = async (req: Request, res: Response) => {
-  const { q } = req.query;
+  const q = normalizeQuery(req.query.toString() ?? "");
   if (!q) {
     res.status(404).send({ message: "specify a search term" });
     return;
   }
 
-  const normalizedSearchTerm = normalizeQuery(q.toString());
-  const searchResults = await searchMangaSeries(normalizedSearchTerm);
+  const searchResults = await searchMangaSeries(q);
   if (!searchResults) return res.status(404).send("Error");
-
   return res.json(searchResults);
 };
+
+const getMangaListController =
+  (type: SearchCategory) => async (req: Request, res: Response) => {
+    const searchResults = await getSeriesList(type);
+    if (!searchResults) return res.status(404).send("Error");
+    return res.json(searchResults);
+  };
 
 const infoController = async (req: Request, res: Response) => {
   console.log(req.params);
@@ -57,4 +64,10 @@ const fieldController = async (req: Request, res: Response) => {
   return res.json(fieldInfo);
 };
 
-export { searchController, infoController, chapterController, fieldController };
+export {
+  searchController,
+  getMangaListController,
+  infoController,
+  chapterController,
+  fieldController,
+};
