@@ -1,7 +1,6 @@
 import express from "express";
 import { Request, Response } from "express";
 import { seriesRouter } from "./routes/seriesInfoRoutes";
-import { healthRouter } from "./routes/healthRouter";
 import chapterFetchRouter from "./routes/chapterFetchingRouter";
 
 const app = express();
@@ -16,7 +15,6 @@ app.use((req: Request, res: Response, next) => {
   next();
 });
 app.use("/manga", seriesRouter);
-app.use("/health", healthRouter);
 app.use("/fetch", chapterFetchRouter);
 
 // basic operation to check if the gateway is working
