@@ -10,6 +10,6 @@
     "noImplicitAny": false,
     "moduleResolution": "Node"
   },
-  "include": ["gateway"],
+  "include": ["gateway/**/*", "test.ts"],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }

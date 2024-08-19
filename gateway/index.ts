@@ -2,6 +2,7 @@ import express from "express";
 import { Request, Response } from "express";
 import { seriesRouter } from "./routes/seriesInfo.routes";
 import chapterFetchRouter from "./routes/fetch.routes";
+import userRouter from "./routes/user.routes";
 
 const app = express();
 app.use(express.json());
@@ -14,6 +15,7 @@ app.use((req: Request, res: Response, next) => {
   );
   next();
 });
+app.use("/user", userRouter);
 app.use("/manga", seriesRouter);
 app.use("/fetch", chapterFetchRouter);
 
