@@ -4,7 +4,7 @@ import {
   searchController,
   fieldController,
   getMangaListController,
-} from "../controllers/mangaInfoControllers";
+} from "../controllers/seriesInfo.controllers";
 const seriesRouter = Router();
 
 // Refactor into individual router once more search functions are created

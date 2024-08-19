@@ -1,7 +1,7 @@
 import express from "express";
 import { Request, Response } from "express";
-import { seriesRouter } from "./routes/seriesInfoRoutes";
-import chapterFetchRouter from "./routes/chapterFetchingRouter";
+import { seriesRouter } from "./routes/seriesInfo.routes";
+import chapterFetchRouter from "./routes/fetch.routes";
 
 const app = express();
 app.use(express.json());

@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import { normalizeQuery } from "../utils/searchUtils";
+import { normalizeQuery } from "../utils/search.utils";
 import {
   fetchChapterList,
   fetchMangaFields,
   fetchMangaInfo,
   getSeriesList,
   searchMangaSeries,
-} from "../services/searchMangaServices";
+} from "../services/seriesInfo.services";
 import { SearchCategory } from "../types";
 
 const searchController = async (req: Request, res: Response) => {

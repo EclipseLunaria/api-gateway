@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { fetchChapter } from "../services/chapterFetchService";
+import { fetchChapter } from "../services/fetch.services";
 
 export const chapterFetchController = async (req: Request, res: Response) => {
   try {

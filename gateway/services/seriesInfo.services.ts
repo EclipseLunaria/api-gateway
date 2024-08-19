@@ -1,6 +1,6 @@
 import axios from "axios";
 import env from "../config";
-import { normalizeQuery } from "../utils/searchUtils";
+import { normalizeQuery } from "../utils/search.utils";
 import { SearchCategory } from "../types";
 
 const BASE_URL = `http://localhost:${env.SERIES_INFO_PORT}`;
@@ -24,7 +24,7 @@ const getSeriesList = async (type: SearchCategory) => {
     newest: `${BASE_URL}/latest/added`,
   };
   const endpointUrl = endpoints[type];
-  console.log("endpointUrl",endpointUrl);
+  console.log("endpointUrl", endpointUrl);
   try {
     const results = (await axios.get(endpointUrl)).data;
     return results;

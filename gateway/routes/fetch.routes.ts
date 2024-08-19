@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { chapterFetchController } from "../controllers/chapterFetchController";
+import { chapterFetchController } from "../controllers/fetch.controllers";
 
 const chapterFetchRouter = Router();
 
