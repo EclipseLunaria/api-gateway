@@ -4,3 +4,5 @@ interface IClientJWT {
   name: string;
   provider: string;
 }
+
+export default IClientJWT;

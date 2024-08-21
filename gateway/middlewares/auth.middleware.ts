@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { verify } from "jsonwebtoken";
 import IAuthenticatedRequest from "../interfaces/AuthenticatedRequest.interface";
+import IClientJWT from "../interfaces/ClientJWT.interface";
 export const authMiddleware = (
   req: Request,
   res: Response,
