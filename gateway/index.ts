@@ -10,6 +10,7 @@ app.use((req: Request, res: Response, next) => {
   const allowedOrigins = [
     "http://localhost:6969",
     "https://manga.eclipselunaria.dev",
+    "https://mangaflux.net",
   ];
   const origin = req.headers.origin as string;
   if (allowedOrigins.includes(origin)) {
