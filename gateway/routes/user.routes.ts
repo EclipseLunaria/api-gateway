@@ -1,6 +1,6 @@
 import { Router } from "express";
 import authMiddleware from "../middlewares/auth.middleware";
-import IAuthenticatedRequest from "../interfaces/AuthenticatedRequest.interface";
+import IAuthenticatedRequest from "../middlewares/AuthenticatedRequest.interface";
 const userRouter = Router();
 userRouter.use(authMiddleware);
 userRouter.get("/", (req, res) => {
