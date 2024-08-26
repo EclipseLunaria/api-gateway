@@ -3,9 +3,12 @@ import { Request, Response } from "express";
 import { seriesRouter } from "./routes/seriesInfo.routes";
 import chapterFetchRouter from "./routes/fetch.routes";
 import userRouter from "./routes/user.routes";
+import ipTrackerMiddleware from "./middlewares/ipTracker.middleware";
 
 const app = express();
+app.set("trust proxy", "loopback")
 app.use(express.json());
+app.use(ipTrackerMiddleware)
 app.use((req: Request, res: Response, next) => {
   const allowedOrigins = [
     "http://localhost:6969",
