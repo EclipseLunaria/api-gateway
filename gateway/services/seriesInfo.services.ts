@@ -19,7 +19,7 @@ const searchMangaSeries = async (q: string) => {
 
 const getSeriesList = async (type: SearchCategory) => {
   const endpoints = {
-    last_updated: `${BASE_URL}/latest/updated`,
+    latest: `${BASE_URL}/latest/updated`,
     popular: `${BASE_URL}/most/popular`,
     newest: `${BASE_URL}/latest/added`,
   };

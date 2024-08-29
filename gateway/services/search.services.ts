@@ -18,7 +18,7 @@ const getPaginatedSeriesList = async (
   const LAST_PAGE = (offset + limit - LAST_INDEX) / SOURCE_PAGE_SIZE;
   console.log(SOURCE_PAGE_SIZE, START_INDEX, START_PAGE, LAST_INDEX, LAST_PAGE);
   const endpoints = {
-    last_updated: `${SEARCH_SERVICE_URL}/latest/updated`,
+    latest: `${SEARCH_SERVICE_URL}/latest/updated`,
     popular: `${SEARCH_SERVICE_URL}/most/popular`,
     newest: `${SEARCH_SERVICE_URL}/latest/added`,
   };

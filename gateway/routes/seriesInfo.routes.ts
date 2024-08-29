@@ -8,7 +8,7 @@ const seriesRouter = Router();
 
 // Refactor into individual router once more search functions are created
 
-seriesRouter.get("/latest/updated", getMangaListController("last_updated"));
+seriesRouter.get("/latest/updated", getMangaListController("latest"));
 seriesRouter.get("/most/popular", getMangaListController("popular"));
 seriesRouter.get("/newest", getMangaListController("newest"));
 
