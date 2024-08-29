@@ -4,11 +4,12 @@ import { seriesRouter } from "./routes/seriesInfo.routes";
 import chapterFetchRouter from "./routes/fetch.routes";
 import userRouter from "./routes/user.routes";
 import ipTrackerMiddleware from "./middlewares/ipTracker.middleware";
+import searchRouter from "./routes/search.routes";
 
 const app = express();
-app.set("trust proxy", "loopback")
+app.set("trust proxy", "loopback");
 app.use(express.json());
-app.use(ipTrackerMiddleware)
+app.use(ipTrackerMiddleware);
 app.use((req: Request, res: Response, next) => {
   const allowedOrigins = [
     "http://localhost:6969",
@@ -33,6 +34,7 @@ app.use((req: Request, res: Response, next) => {
 app.use("/user", userRouter);
 app.use("/manga", seriesRouter);
 app.use("/fetch", chapterFetchRouter);
+app.use("/search", searchRouter);
 
 // basic operation to check if the gateway is working
 app.get("/", (req: Request, res: Response) => {

@@ -1,5 +1,4 @@
 import { verify } from "jsonwebtoken";
-import { IBearerBody } from "../interfaces/auth.interfaces";
 import IAcessToken from "../interfaces/auth.interfaces/IAccessToken";
 const checkAuth = (token: string) => {
   const decodedToken: IAcessToken = verify(
