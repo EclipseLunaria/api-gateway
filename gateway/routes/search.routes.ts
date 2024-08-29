@@ -8,7 +8,7 @@ const searchRouter = Router();
 searchRouter.get("/", searchController);
 
 searchRouter.get("/newest", findManga("newest"));
-searchRouter.get("/latest", findManga("last_updated"));
+searchRouter.get("/latest", findManga("latest"));
 searchRouter.get("/popular", findManga("popular"));
 
 export default searchRouter;
