@@ -2,8 +2,8 @@ import { MangaMetadata } from "../entities";
 import { seriesParsingConfig } from "../config/parsingConfig";
 import { parseFields } from "../migrations/series-info/services/parsing";
 import { extractPageHtml, getMangaUrl } from "../migrations/series-info/utils";
-import { SeriesInfo } from "../migrations/database/types/seriesInfo";
-import { uploadSeries } from "../migrations/database/services/SeriesInfoServices";
+import { SeriesInfo } from "../models/seriesInfo";
+import { uploadSeries } from "./series.services";
 
 const parseSeries = async (manga_id: string) => {
   const seriesUrl = getMangaUrl(manga_id);

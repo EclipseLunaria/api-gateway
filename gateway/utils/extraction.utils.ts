@@ -57,4 +57,4 @@ const getMangaPage = async (manga_id: string) => {
   return $;
 };
 
-export { parseFields };
+export { parseFields, getMangaPage, getMangaUrl, extractPageHtml };

@@ -8,6 +8,7 @@ import {
 const seriesRouter = Router();
 
 seriesRouter.get("/:mangaId/", infoController);
+
 seriesRouter.get("/:mangaId/chapters", chapterController);
 seriesRouter.get("/:mangaId/:fieldId", fieldController);
 

@@ -1,14 +1,5 @@
-import {
-  extractPageHtml,
-  getMangaUrl,
-  parsePageNumber,
-  parseSeriesInfo,
-} from "./extraction";
-export { extractPageHtml, getMangaUrl, parsePageNumber, parseSeriesInfo };
+import { extractPageHtml, getMangaUrl, parsePageNumber } from "./extraction";
+export { extractPageHtml, getMangaUrl, parsePageNumber };
 
-import {
-  extractTotalPages,
-  extractTotalResults,
-  extractSearchResults,
-} from "./search";
-export { extractTotalPages, extractTotalResults, extractSearchResults };
+import { extractTotalPages } from "./search";
+export { extractTotalPages };

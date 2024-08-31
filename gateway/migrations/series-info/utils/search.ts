@@ -1,5 +1,4 @@
 import { CheerioAPI } from "cheerio";
-import { parseSeriesInfo } from "../utils";
 import { SearchCategory } from "../types";
 
 const getSearchUrl = (type: SearchCategory, page: number) => {
@@ -22,42 +21,4 @@ const extractTotalPages = async ($: CheerioAPI) => {
   return totalPages ? parseInt(totalPages) : 1;
 };
 
-const extractTotalResults = async ($: CheerioAPI) => {
-  const totalResults = $(".group-qty")
-    .text()
-    .split(" ")
-    .pop()
-    ?.replace(/,/g, "");
-  console.log(totalResults);
-  return totalResults ? parseInt(totalResults) : -1;
-};
-const extractSearchResults = async (
-  $: CheerioAPI,
-  containerClass?: string,
-  imageClass?: string
-) => {
-  console.log("Extracting search results");
-  console.log(containerClass, imageClass);
-  const searchResults = $(
-    containerClass ? containerClass : ".search-story-item"
-  )
-    .toArray()
-    .map(async (element$) => {
-      const imageHref = $(element$)
-        .find(imageClass ? imageClass : ".item-img")
-        .attr("href");
-      if (!imageHref) {
-        return {};
-      }
-      return await parseSeriesInfo(imageHref);
-    });
-
-  return Promise.all(searchResults);
-};
-
-export {
-  getSearchUrl,
-  extractTotalPages,
-  extractTotalResults,
-  extractSearchResults,
-};
+export { getSearchUrl, extractTotalPages };

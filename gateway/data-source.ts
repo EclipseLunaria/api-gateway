@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { Chapters, MangaMetadata } from "../../entities";
+import { Chapters, MangaMetadata } from "./entities";
 import { config } from "dotenv";
 config();
 
