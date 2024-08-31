@@ -1,13 +1,12 @@
 import { Request, Response } from "express";
 import { normalizeQuery } from "../utils/search.utils";
 import {
-  fetchChapterList,
-  fetchMangaFields,
-  fetchMangaInfo,
   getSeriesList,
   searchMangaSeries,
 } from "../services/seriesInfo.services";
 import { SearchCategory } from "../types";
+import { getChapters, getSeries } from "../services/series.services";
+import { parseSeries } from "../services/extraction.services";
 
 const searchController = async (req: Request, res: Response) => {
   const q = normalizeQuery(req.query.q?.toString() ?? "");
@@ -35,11 +34,21 @@ const infoController = async (req: Request, res: Response) => {
     res.status(404).send({ message: "specify a manga id" });
     return;
   }
+  // try prefetch
   console.log("mangaId:", mangaId);
-  const mangaInfo = await fetchMangaInfo(mangaId);
-  console.log(mangaInfo);
-  if (!mangaInfo) return res.status(404).send("Error: Manga not found");
-  return res.json(mangaInfo);
+  const mangaInfo = await getSeries(mangaId);
+  if (mangaInfo) {
+    res.json(mangaInfo);
+    return;
+  }
+  //parse Series info
+  try {
+    await parseSeries(mangaId);
+    res.json(await getSeries(mangaId));
+    return;
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
 };
 
 const chapterController = async (req: Request, res: Response) => {
@@ -48,7 +57,7 @@ const chapterController = async (req: Request, res: Response) => {
     res.status(404).send({ message: "specify a manga id." });
     return;
   }
-  const chapterList = await fetchChapterList(mangaId);
+  const chapterList = await getChapters(mangaId);
   if (!chapterList) return res.status(404).send("Error: Chapter not found.");
   return res.json(chapterList);
 };
@@ -59,9 +68,10 @@ const fieldController = async (req: Request, res: Response) => {
     res.status(404).send({ message: "specify a manga id and field." });
     return;
   }
-  const fieldInfo = await fetchMangaFields(mangaId, fieldId);
-  if (!fieldInfo) return res.status(404).send("Error: Field not found.");
-  return res.json(fieldInfo);
+  const series = await getSeries(mangaId);
+  if (!Object.keys(series).includes(fieldId))
+    return res.status(404).send("Error: Field not found.");
+  return res.json(series[fieldId]);
 };
 
 export {

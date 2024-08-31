@@ -2,6 +2,7 @@ import axios from "axios";
 import env from "../config";
 import { normalizeQuery } from "../utils/search.utils";
 import { SearchCategory } from "../types";
+import { getChapters } from "./series.services";
 
 const BASE_URL = `http://localhost:${env.SERIES_INFO_PORT}`;
 const searchMangaSeries = async (q: string) => {
@@ -40,7 +41,7 @@ const fetchMangaInfo = async (mangaId: string) => {
   try {
     let results = {
       ...(await axios.get(endpointUrl)).data,
-      chapters: await fetchChapterList(mangaId),
+      chapters: await getChapters(mangaId),
     };
     return results;
   } catch (error: any) {

@@ -1,7 +1,7 @@
 import MangaSeriesData from "./mangaSeriesData";
 interface MangaSearchResponse {
   totalResults: number;
-  results: MangaSeriesData[];
+  results: (MangaSeriesData | {})[];
   page: number;
   totalPages: number;
 }

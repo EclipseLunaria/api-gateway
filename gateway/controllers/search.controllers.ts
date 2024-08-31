@@ -1,6 +1,10 @@
 import { SearchCategory } from "../types";
 import { Request, Response } from "express";
-import getPaginatedSeriesList from "../services/search.services";
+import {
+  getPaginatedSeriesList,
+  searchSeriesService,
+} from "../services/search.services";
+import { parsePageNumber } from "../utils/search.utils";
 
 const findManga =
   (type: SearchCategory) => async (req: Request, res: Response) => {
@@ -21,5 +25,22 @@ const findManga =
       res.status(500).send({ message: error });
     }
   };
+
+export const newSearchSeries = async (req: Request, res: Response) => {
+  const page = parsePageNumber(req.query.page as string) || 1;
+  const searchTerm = req.query.q;
+  if (!searchTerm) {
+    return res.status(400).json({ error: "Search term is required" });
+  }
+  try {
+    const searchResponse = await searchSeriesService(
+      page,
+      searchTerm.toString()
+    );
+    res.status(200).json(searchResponse);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 export default findManga;

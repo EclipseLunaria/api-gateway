@@ -4,7 +4,50 @@ import { SearchCategory } from "../types";
 import MangaSearchResponse from "../models/mangaSearchResponse";
 import SearchResponse from "../models/searchResponse";
 
-const SEARCH_SERVICE_URL = `http://localhost:${env.SERIES_INFO_PORT}`;
+import {
+  extractTotalResults,
+  extractTotalPages,
+  extractSearchResults,
+  getSearchUrl,
+} from "../utils/search.utils";
+import { extractPageHtml } from "../utils/extraction.utils";
+
+const searchSeriesService = async (page: number, searchTerm: string) => {
+  const seriesUrl = `https://manganato.com/search/story/${searchTerm
+    .replace(/ /g, "_")
+    .toLowerCase()}?page=${page}`;
+  const $ = await extractPageHtml(seriesUrl);
+  if (!$) {
+    throw new Error("Internal server error");
+  }
+  const searchResponse: MangaSearchResponse = {
+    page: page,
+    totalPages: await extractTotalPages($),
+    totalResults: await extractTotalResults($),
+    results: await extractSearchResults($),
+  };
+  return searchResponse;
+};
+
+const latestSeriesService = async (page: number, type: SearchCategory) => {
+  const seriesUrl = getSearchUrl(type, page);
+  console.log(seriesUrl);
+  const $ = await extractPageHtml(seriesUrl);
+  if (!$) {
+    throw new Error("Internal server error");
+  }
+  const searchResponse: MangaSearchResponse = {
+    page: page,
+    totalPages: await extractTotalPages($),
+    totalResults: await extractTotalResults($),
+    results: await extractSearchResults(
+      $,
+      ".content-genres-item",
+      ".genres-item-img"
+    ),
+  };
+  return searchResponse;
+};
 
 const getPaginatedSeriesList = async (
   type: SearchCategory,
@@ -17,21 +60,12 @@ const getPaginatedSeriesList = async (
   const LAST_INDEX = (offset + limit) % SOURCE_PAGE_SIZE;
   const LAST_PAGE = (offset + limit - LAST_INDEX) / SOURCE_PAGE_SIZE;
   console.log(SOURCE_PAGE_SIZE, START_INDEX, START_PAGE, LAST_INDEX, LAST_PAGE);
-  const endpoints = {
-    latest: `${SEARCH_SERVICE_URL}/latest/updated`,
-    popular: `${SEARCH_SERVICE_URL}/most/popular`,
-    newest: `${SEARCH_SERVICE_URL}/latest/added`,
-  };
+
   let totalResultCount: number = 0;
   const results = [...Array(LAST_PAGE - START_PAGE + 1)]
     .map((_, i) => i + START_PAGE)
     .map(async (page) => {
-      const url = `${endpoints[type]}?page=${page}`;
-      console.log(url);
-      // Create Axios API instance for calling series info api
-      const response = await axios.get(`${endpoints[type]}?page=${page}`);
-
-      const data: MangaSearchResponse = await response.data;
+      const data: MangaSearchResponse = await latestSeriesService(page, type);
       totalResultCount = data.totalResults;
       if (LAST_PAGE === START_PAGE) {
         return data.results.slice(START_INDEX, LAST_INDEX);
@@ -46,7 +80,6 @@ const getPaginatedSeriesList = async (
   const data = (await Promise.all(results))
     .reduce((prev, current) => prev.concat(current))
     .map((series) => {
-      series.chapters = undefined;
       return series;
     });
   return {
@@ -57,4 +90,4 @@ const getPaginatedSeriesList = async (
   } as SearchResponse;
 };
 
-export default getPaginatedSeriesList;
+export { getPaginatedSeriesList, searchSeriesService };

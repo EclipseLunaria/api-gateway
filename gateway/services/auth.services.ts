@@ -1,10 +1,6 @@
 import { verify } from "jsonwebtoken";
-import IAcessToken from "../interfaces/auth.interfaces/IAccessToken";
 const checkAuth = (token: string) => {
-  const decodedToken: IAcessToken = verify(
-    token,
-    process.env.JWT_SECRET || ""
-  ) as IAcessToken;
+  const decodedToken: any = verify(token, process.env.JWT_SECRET || "") as any;
 
   if (Date.now() > Number(decodedToken.token_expires_at)) {
     throw new Error("Token Expired");
