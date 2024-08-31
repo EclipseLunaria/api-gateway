@@ -22,7 +22,7 @@ const searchSeriesService = async (page: number, searchTerm: string) => {
   }
   const searchResponse: MangaSearchResponse = {
     page: page,
-    totalPages: await extractTotalResults($),
+    totalPages: await extractTotalPages($),
     totalResults: await extractTotalResults($),
     results: await extractSearchResults($),
   };

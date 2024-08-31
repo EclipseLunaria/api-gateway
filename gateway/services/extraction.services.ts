@@ -1,7 +1,7 @@
 import { MangaMetadata } from "../entities";
 import { seriesParsingConfig } from "../config/parsingConfig";
-import { parseFields } from "../migrations/series-info/services/parsing";
-import { extractPageHtml, getMangaUrl } from "../migrations/series-info/utils";
+import { parseFields } from "../utils/extraction.utils";
+import { extractPageHtml, getMangaUrl } from "../utils/extraction.utils";
 import { SeriesInfo } from "../models/seriesInfo";
 import { uploadSeries } from "./series.services";
 
