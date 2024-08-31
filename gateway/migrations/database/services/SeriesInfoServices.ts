@@ -1,18 +1,18 @@
-import { MangaMetadata, Chapters } from "../entities";
+import { MangaMetadata, Chapters } from "../../../entities";
 import { AppDataSource } from "../data-source";
 import { SeriesInfo } from "../types/seriesInfo";
 
 export const uploadSeries = async (seriesInfo: SeriesInfo) => {
   console.log("Uploading series...");
-  console.log("rating", seriesInfo)
+  console.log("rating", seriesInfo);
   const metadataRepo = AppDataSource.getRepository(MangaMetadata);
   const metadata = new MangaMetadata();
   metadata.manga_id = seriesInfo.manga_id;
   metadata.title = seriesInfo.title;
   metadata.author = seriesInfo.author;
   metadata.image = seriesInfo.image;
-  // metadata.totalVotes = seriesInfo.rating.totalVotes;
-  // metadata.ratingAvg = seriesInfo.rating.ratingAvg;
+  metadata.totalVotes = seriesInfo.rating.totalVotes;
+  metadata.ratingAvg = seriesInfo.rating.ratingAvg;
   metadata.description = seriesInfo.description;
   metadata.status = seriesInfo.status;
   metadata.genres = seriesInfo.genres;

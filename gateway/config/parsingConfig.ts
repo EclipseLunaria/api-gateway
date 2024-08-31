@@ -53,6 +53,10 @@ const seriesParsingConfig: ParsingConfig = {
   totalChapters: ($) => $(".row-content-chapter").find("li").get().length,
 };
 
+const mangaMetadataConfig: ParsingConfig = {
+  
+};
+
 const searchResultConfig: ParsingConfig = {
   title: ($) => $(".item-right").find("h3").text().trim(),
   link: ($) => $(".item-right a").attr("href"),

@@ -1,5 +1,6 @@
-import { CheerioAPI } from "cheerio";
-import { ParsingConfig, ParsingFunction } from "../../../config/parsingConfig";
+import { CheerioAPI, load } from "cheerio";
+import { ParsingConfig, seriesParsingConfig } from "../config/parsingConfig";
+import axios from "axios";
 
 /**
  * Parses the fields of a CheerioAPI object based on the provided configuration.
@@ -32,4 +33,28 @@ const parseField = async (
   return await config[field]($);
 };
 
-export { parseFields, parseField };
+const getMangaUrl = (manga_id: string) =>
+  `https://chapmanganato.to/manga-${manga_id}`;
+
+const extractPageHtml = async (url: string): Promise<CheerioAPI> => {
+  let html = "";
+  try {
+    const response = await axios.get(url);
+    html = response.data;
+    return load(html);
+  } catch (error: any) {
+    console.log(error);
+    throw new Error("Internal server error");
+  }
+};
+
+const getMangaPage = async (manga_id: string) => {
+  const seriesUrl = getMangaUrl(manga_id);
+  const $ = await extractPageHtml(seriesUrl);
+  if (!$) {
+    throw new Error("unable to parse html");
+  }
+  return $;
+};
+
+export { parseFields };

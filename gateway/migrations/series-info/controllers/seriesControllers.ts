@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { extractPageHtml, getMangaUrl } from "../utils";
 import { parseField, parseFields } from "../services/parsing";
-import { seriesParsingConfig } from "../config/parsingConfig";
+import { seriesParsingConfig } from "../../../config/parsingConfig";
 import {
   fetchSeriesField,
   getSeriesInfo,

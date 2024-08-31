@@ -4,7 +4,6 @@ import {
   fieldController,
 } from "../controllers/seriesControllers";
 
-
 export const seriesRouter = Router();
 
 seriesRouter.get("/manga/:manga_id/", seriesInfoController);

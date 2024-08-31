@@ -1,6 +1,6 @@
 import axios from "axios";
 import { load, CheerioAPI } from "cheerio";
-import { seriesParsingConfig } from "../config/parsingConfig";
+import { seriesParsingConfig } from "../../../config/parsingConfig";
 import { parseFields } from "../services/parsing";
 import { MangaSeriesData } from "../models/seriesModels";
 import { getSeriesInfo, storeSeriesInfo } from "../services/storage";
