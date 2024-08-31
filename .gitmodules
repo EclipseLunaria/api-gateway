@@ -1,3 +1,0 @@
-[submodule "gateway/interfaces"]
-	path = gateway/interfaces
-	url = https://github.com/EclipseLunaria/intraservice-interfaces.git

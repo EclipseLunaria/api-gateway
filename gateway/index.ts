@@ -1,8 +1,7 @@
 import express from "express";
 import { Request, Response } from "express";
-import { seriesRouter } from "./routes/seriesInfo.routes";
+import { seriesRouter } from "./routes/series.routes";
 import chapterFetchRouter from "./routes/fetch.routes";
-import userRouter from "./routes/user.routes";
 import ipTrackerMiddleware from "./middlewares/ipTracker.middleware";
 import searchRouter from "./routes/search.routes";
 
@@ -31,7 +30,6 @@ app.use((req: Request, res: Response, next) => {
   }
   next();
 });
-app.use("/user", userRouter);
 app.use("/manga", seriesRouter);
 app.use("/fetch", chapterFetchRouter);
 app.use("/search", searchRouter);
