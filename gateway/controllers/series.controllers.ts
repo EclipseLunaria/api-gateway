@@ -37,16 +37,18 @@ const infoController = async (req: Request, res: Response) => {
   // try prefetch
   console.log("mangaId:", mangaId);
   const mangaInfo = await getSeries(mangaId);
-
-  if (!mangaInfo) {
-    //parse Series info
-
+  if (mangaInfo) {
+    res.json(mangaInfo);
+    return;
+  }
+  //parse Series info
+  try {
     await parseSeries(mangaId);
     res.json(await getSeries(mangaId));
     return;
+  } catch (error) {
+    res.status(500).json({ message: error });
   }
-  console.log(mangaInfo);
-  if (!mangaInfo) return res.status(404).send("Error: Manga not found");
 };
 
 const chapterController = async (req: Request, res: Response) => {
