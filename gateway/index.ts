@@ -1,10 +1,10 @@
 import express from "express";
 import { Request, Response } from "express";
 import { seriesRouter } from "./routes/series.routes";
-import chapterFetchRouter from "./routes/fetch.routes";
 import ipTrackerMiddleware from "./middlewares/ipTracker.middleware";
 import searchRouter from "./routes/search.routes";
 import { AppDataSource } from "./data-source";
+import distroRouter from "./routes/distro.routes";
 
 AppDataSource.initialize()
   .then(() => {
@@ -34,7 +34,7 @@ AppDataSource.initialize()
       next();
     });
     app.use("/manga", seriesRouter);
-    app.use("/fetch", chapterFetchRouter);
+    app.use("/fetch", distroRouter);
     app.use("/search", searchRouter);
 
     // basic operation to check if the gateway is working
