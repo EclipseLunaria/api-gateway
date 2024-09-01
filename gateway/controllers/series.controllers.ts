@@ -1,31 +1,6 @@
 import { Request, Response } from "express";
-import { normalizeQuery } from "../utils/search.utils";
-import {
-  getSeriesList,
-  searchMangaSeries,
-} from "../services/seriesInfo.services";
-import { SearchCategory } from "../types";
 import { getChapters, getSeries } from "../services/series.services";
 import { parseSeries } from "../services/extraction.services";
-
-const searchController = async (req: Request, res: Response) => {
-  const q = normalizeQuery(req.query.q?.toString() ?? "");
-  if (!q) {
-    res.status(404).send({ message: "specify a search term" });
-    return;
-  }
-
-  const searchResults = await searchMangaSeries(q);
-  if (!searchResults) return res.status(404).send("Error");
-  return res.json(searchResults);
-};
-
-const getMangaListController =
-  (type: SearchCategory) => async (req: Request, res: Response) => {
-    const searchResults = await getSeriesList(type);
-    if (!searchResults) return res.status(404).send("Error");
-    return res.json(searchResults);
-  };
 
 const infoController = async (req: Request, res: Response) => {
   console.log(req.params);
@@ -74,10 +49,4 @@ const fieldController = async (req: Request, res: Response) => {
   return res.json(series[fieldId]);
 };
 
-export {
-  searchController,
-  getMangaListController,
-  infoController,
-  chapterController,
-  fieldController,
-};
+export { infoController, chapterController, fieldController };

@@ -1,6 +1,5 @@
 import { Router } from "express";
 import findManga, { newSearchSeries } from "../controllers/search.controllers";
-import { searchController } from "../controllers/series.controllers";
 
 const searchRouter = Router();
 //generic search endpoint
