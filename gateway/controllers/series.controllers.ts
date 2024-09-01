@@ -1,10 +1,15 @@
 import { Request, Response } from "express";
-import { getChapters, getSeries } from "../services/series.services";
+import {
+  getChapters,
+  getRandomSeries,
+  getSeries,
+} from "../services/series.services";
 import { parseSeries } from "../services/extraction.services";
 
 const infoController = async (req: Request, res: Response) => {
-  console.log(req.params);
-  const { mangaId } = req.params;
+  const mangaId = (req as any).mangaId;
+  // console.log(req.params);
+  // const { mangaId } = req.params;
   if (!mangaId) {
     res.status(404).send({ message: "specify a manga id" });
     return;
@@ -23,6 +28,21 @@ const infoController = async (req: Request, res: Response) => {
     return;
   } catch (error) {
     res.status(500).json({ message: error });
+  }
+};
+
+const randomSeriesController = async (req: Request, res: Response) => {
+  try {
+    const randomSeries = await getRandomSeries();
+    // res.json(randomSeries);
+    res.redirect(
+      process.env.NODE_ENV
+        ? `https://mangaflux.net/title/${randomSeries.manga_id}`
+        : `http://localhost:6969/title/${randomSeries.manga_id}`
+    );
+  } catch (error) {
+    console.error();
+    res.status(500).send({ message: error });
   }
 };
 
@@ -49,4 +69,9 @@ const fieldController = async (req: Request, res: Response) => {
   return res.json(series[fieldId]);
 };
 
-export { infoController, chapterController, fieldController };
+export {
+  infoController,
+  chapterController,
+  fieldController,
+  randomSeriesController,
+};

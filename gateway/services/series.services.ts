@@ -12,6 +12,17 @@ export const getSeries = async (mangaId: string) => {
   return metadata;
 };
 
+export const getRandomSeries = async () => {
+  const metadataRepo = AppDataSource.getRepository(MangaMetadata);
+  const randomSeries = metadataRepo
+    .createQueryBuilder("manga_id")
+    .addOrderBy("Random()")
+    .limit(1)
+    .getOne();
+  return randomSeries;
+  
+};
+
 export const getChapters = async (mangaId: string) => {
   await getSeries(mangaId);
   const chaptersRepo = AppDataSource.getRepository(Chapters);
