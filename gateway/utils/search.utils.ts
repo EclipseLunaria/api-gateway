@@ -75,6 +75,12 @@ const extractSearchResults = async (
         return {};
       }
       const manga_id = imageHref.split("-").pop();
+      const prefetchedSeries = getSeries(manga_id);
+      if (prefetchedSeries) {
+        console.log("prefetched series:", manga_id);
+        return prefetchedSeries;
+      }
+      //series not parsed
       await parseSeries(manga_id);
       return await getSeries(manga_id);
     });
