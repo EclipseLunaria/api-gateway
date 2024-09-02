@@ -5,6 +5,8 @@ import ipTrackerMiddleware from "./middlewares/ipTracker.middleware";
 import searchRouter from "./routes/search.routes";
 import { AppDataSource } from "./data-source";
 import distroRouter from "./routes/distro.routes";
+import { getUserController } from "./controllers/blog.controllers";
+import blogRouter from "./routes/blog.routes";
 
 AppDataSource.initialize()
   .then(() => {
@@ -33,6 +35,7 @@ AppDataSource.initialize()
       }
       next();
     });
+    app.use("/blog", blogRouter);
     app.use("/manga", seriesRouter);
     app.use("/fetch", distroRouter);
     app.use("/search", searchRouter);
