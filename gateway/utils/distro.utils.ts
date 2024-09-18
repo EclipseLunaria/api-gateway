@@ -12,7 +12,7 @@ const CONTENT_DIR =
 const CONTENT_URL_BASE =
   process.env.NODE_ENV !== "production"
     ? `file:/${CONTENT_DIR}`
-    : "https://cdn.eclipselunaria.dev";
+    : "https://cdn.mangaflux.dev";
 
 export const sortByPageNumber = (a?: string, b?: string) => {
   if (!a || !b) return 0;
