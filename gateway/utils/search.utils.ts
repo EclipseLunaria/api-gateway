@@ -75,9 +75,9 @@ const extractSearchResults = async (
         return {};
       }
       const manga_id = imageHref.split("-").pop();
-      const prefetchedSeries = getSeries(manga_id);
+      const prefetchedSeries = await getSeries(manga_id);
       if (prefetchedSeries) {
-        console.log("prefetched series:", manga_id);
+        console.log("prefetched series:", prefetchedSeries);
         return prefetchedSeries;
       }
       //series not parsed
@@ -85,7 +85,7 @@ const extractSearchResults = async (
       return await getSeries(manga_id);
     });
 
-  return Promise.all(searchResults);
+  return await Promise.all(searchResults);
 };
 
 const parsePageNumber = (pageString: string) => {

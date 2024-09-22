@@ -19,6 +19,7 @@ AppDataSource.initialize()
         "http://localhost:6969",
         "https://manga.eclipselunaria.dev",
         "https://mangaflux.net",
+        "http://10.0.0.232:6969"
       ];
       const origin = req.headers.origin as string;
       if (allowedOrigins.includes(origin)) {
